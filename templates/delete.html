@@ -1,0 +1,15 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content%}
+                    <div id="main">
+                                <article class="post">
+                                    <h1>You really want to delete this masterpiece?</h1>
+                                    <form action="" method="post">
+                                        {% csrf_token %}
+										<button><a href="{% url 'home' %}">No</a></button>
+                                        <input type="submit" value="YES">
+                                    </form>
+                                </article>
+                            </div>
+
+	{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content%}
+				<!-- Main -->
+					<div id="main" style="display: flex; justify-content: center; align-items: center;" >
+
+						<!-- Post -->
+							<article class="post" style="width:80%;">
+                                <div style="display: flex;">
+                                    <div style="flex: 1; text-align: left; ">
+                                        <div class="title">
+                                            <h2 >Hey</h2>
+                                            <h2 style="padding-top: 3%;">{{ user.username }}</h2>
+                                        </div>
+                                    </div>        
+                                    <div style="flex: 1; text-align: center;">
+                                        <section>
+                                            <h2>Your uploaded Jobs</h2>
+                                            <ul class="posts">
+                                                {%for post in post%}
+                                                <li>
+                                                    <article>
+                                                        <header>
+                                                            <h3><a href="{% url 'read' post.id %}">{{post.title}}</a></h3>
+                                                            <time class="published" datetime="2015-10-20">{{post.created}}</time>
+                                                        </header>
+                                                        <a href="{% url 'read' post.id %}" class="image"><img src="{{post.company_logo.url}}" alt="" /></a>
+                                                    </article>
+                                                    <button><a  href="{% url 'update' post.id %}" >Edit</a></button>
+                                                    <button><a href="{% url 'delete' post.id %}">Delete</a></button>
+                                                </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </section>                                    </div>
+                                </div>
+								
+							</article>
+                        </div>
+                        {% endblock %}

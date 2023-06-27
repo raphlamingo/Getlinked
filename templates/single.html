@@ -1,0 +1,44 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content%}
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div style="display: flex;">
+										<div style="flex: 1; text-align: left; ">
+											<div class="title">
+												<h2>{{post.title}}</h2>
+												<p>{{post.company}}</p>
+												<p>{{post.pay}}</p>
+											</div>
+										</div>        
+										<div style="flex: 1; text-align: right;padding-top: 1%;">
+											<img src="{{post.company_logo.url}}" style="width: 50%; clip-path: circle();"/>
+										</div>
+									</div>									
+								</header>
+								<p>{{post.description}}</p>
+								<br>
+								<p>{{post.requirement}}</p>
+								<br>
+								<p> To apply please send your resume and cover letter to <b>{{post.author.email}}</b></p>
+								<div class="meta">
+									<time class="published" datetime="{{post.date_due}}">Application closes: {{post.date_due}}</time>
+								</div>		
+								<footer>
+									<ul class="actions">
+										<li><a href="" class="button large">Apply</a></li>
+									</ul>
+									<ul class="stats">
+										<li><a href="#">General</a></li>
+										<li><a href="#" class="icon solid fa-heart">28</a></li>
+										<li><a href="#" class="icon solid fa-comment">128</a></li>
+									</ul>
+								</footer>
+							</article>
+
+					</div>
+{% endblock %}

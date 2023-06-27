@@ -1,0 +1,64 @@
+{% extends 'header.html' %}
+{% block content %}
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+						{% for job in jobs%}
+							<article class="post">
+								<header>
+									<div class="title">
+										<h2><a href="{% url 'read' job.id %}">{{job.title}}</a></h2>
+									</div>
+									<div class="meta">
+										<time class="published" datetime="{{job.date_posted}}">{{job.date_posted}}</time>
+									</div>
+								</header>
+								<p><a href="#" class="author"><span class="name">{{job.company}}</span><img src="{{job.company_logo.url}}" alt="" /></a>
+								</p>
+								<footer>
+									<ul class="actions">
+										<li><a href="{% url 'read' job.id %}" class="button large">Apply</a></li>
+									</ul>
+								</footer>
+							</article>
+						{% endfor %}
+
+						<!-- Pagination -->
+							<ul class="actions pagination">
+								{% if jobs.has_previous %}
+								<li><a href="?page={{jobs.previous_page_number}}" class= "button large previous">Previous Page</a></li>
+								{% endif %}
+								{% if jobs.has_next %}
+								<li><a href="?page={{jobs.next_page_number}}" class="button large next">Next Page</a></li>
+								{% endif %}
+							</ul>
+
+					</div>
+
+					<section id="sidebar">
+
+						<!-- Mini Posts -->
+							<section>
+								<div class="mini-posts">
+
+									<!-- Mini Post -->
+									{% if next_page %}
+									<h3>Next Page</h3>
+									{% for item in next_page %}
+										<article class="mini-post">
+											<header>
+												<h3><a href="{% url 'read' item.id %}">{{item.title}}</a></h3>
+												<time class="published" datetime="{{item.date_posted}}">{{item.date_posted}}</time>
+												<a href="{% url 'read' item.id %}" class="author"><img src="{{item.company_logo.url}}" alt="" /></a>
+											</header>
+										</article>
+									{% endfor %}
+								{% endif %}
+										
+
+								</div>
+							</section>
+							</section>
+
+{% endblock %}

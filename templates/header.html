@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+	<head>
+		<title>GetLinked</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/d.css' %}" />
+		<script src="https://kit.fontawesome.com/7828952f17.js" crossorigin="anonymous"></script>
+
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="{% url 'home' %}">GetLinked</a></h1>
+						<nav class="main">
+							<ul>
+								<li class="search">
+									<a class="fa-search" href="#search">Search</a>
+									<form id="search" method="get" action="{% url 'search' %}">
+										<input type="text" name="query" placeholder="Search" />
+									</form>
+								</li>
+								<li class="menu">
+									<a class="fa-bars" href="#menu">Menu</a>
+								</li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+				<section id="menu">
+					<!-- Search -->
+						<section>
+							<form class="search" method="get" action="{% url 'search' %}">
+								<input type="text" name="query" placeholder="Search for job title" />
+							</form>
+						</section>
+
+					<!-- Links -->
+						<section>
+							<ul class="links">
+									<li><a href="{% url 'profile'%}">Your profile</a></li>
+									{% if request.user.is_authenticated %}
+									<li><a href="{% url 'logout_user'%}">Logout</a></li>
+									<li><a href="{% url 'post'%}">Post job</a></li>
+									{% else %}
+									<li><a href="{% url 'register'%}">Register</a></li>
+									<li><a href="{% url 'login_user'%}">Log In</a></li>
+									{% endif %}
+								</ul>
+							</ul>
+						</section>
+						</section>
+{% block content %}
+
+{% endblock %}
+</div>
+<div class="container">
+	<section id="footer">
+		<ul class="icons">
+			<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+			<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+			<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+			<li><a href="#" class="icon solid fa-rss"><span class="label">RSS</span></a></li>
+			<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+		</ul>
+		<p class="copyright">&copy; 2023 Raphlamingo.</p>
+	</section>
+</div>
+
+
+
+
+<!-- Scripts -->
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/browser.min.js' %}"></script>
+<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+<script src="{% static 'assets/js/util.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+</html>
